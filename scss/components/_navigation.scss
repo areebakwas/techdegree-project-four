@@ -1,0 +1,35 @@
+// *****************************************************************************
+//                          Navigation Item css rules
+//                    styles anchor points with navigation
+//            styles mouse hover over anchor point within navigation
+// *****************************************************************************
+
+.nav {
+  @include flex-box(column);
+  justify-content: center;
+  text-align: center;
+  @include media-query($break-point) {
+    flex-direction: row;
+  }
+}
+
+.nav__item {
+  margin: 5px;
+
+  a{
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    padding: 15px 10px;
+    border-radius: 5px;
+    color: $text-general-color;
+    @include media-query($break-point){
+      font-size: $orig-small-font-size;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+      color: $off-color;
+    }
+  }
+}

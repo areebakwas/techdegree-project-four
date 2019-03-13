@@ -1,0 +1,45 @@
+// *****************************************************************************
+//           center-content Mixin: used to generate css to center content
+//                      by setting width with the arguement passed,
+//  and setting margins; top-bottom (optional - if specified, else set to zeros)
+//                            and set equal margin left-right
+// *****************************************************************************
+
+@mixin center-content ($percent, $margin: 0){
+  width: $percent;
+  margin: $margin auto;
+}
+
+// *****************************************************************************
+//           media-query Mixin: used to generate css for media query
+// *****************************************************************************
+
+@mixin media-query ($break){
+  @media (min-width: $break) {
+    @content;
+  }
+}
+
+// *****************************************************************************
+//           font-fix Mixin: used to generate css for different fonts sizes
+// *****************************************************************************
+
+@mixin font-fix ($percent){
+  font-size: resize-font-px($orig-small-font-size,
+                            $percent);
+  @include media-query($break-point) {
+    font-size: resize-font-px($orig-large-font-size,
+                              $percent);
+  }
+
+}
+
+// *****************************************************************************
+//           flex-box Mixin: used to generate css for flex boxes
+// *****************************************************************************
+
+@mixin flex-box ($direction: row){
+  display: flex;
+  flex-direction: $direction;
+
+}

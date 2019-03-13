@@ -1,0 +1,32 @@
+// *****************************************************************************
+//                            form class CSS rules
+//                      legend within the form's class CSS rules
+//                      images within the form's class CSS rules
+//                  hidden labels within the form's class CSS rules
+//                 input elements within the form's class CSS rules
+// *****************************************************************************
+
+.form {
+  @include flex-box(column);
+
+  legend {
+    margin: 20px 0;
+  }
+
+  img {
+    @include center-content (60%, 5px);
+  }
+
+  &__label--hidden {
+    display: none;
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 5px solid $secondary-color;
+    @include center-content (95%);
+    padding: 10px 5px;
+    margin-top: 10px;
+    @include font-fix($general-font-percent);
+  }
+}

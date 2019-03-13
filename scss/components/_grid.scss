@@ -1,0 +1,162 @@
+// **********************************************
+// _grid.scss
+// styles related to the grid system and
+// main container.
+// major grid styles have been added here for you
+// but additional styling may be needed
+// **********************************************
+
+
+// grid base class
+.grid {
+
+  // .grid__row
+  &__row {
+    padding: 1em 10px;
+    @include flex-box(column);
+
+    // NOTE: replace with media query mixin if aiming for exceeds
+    @include media-query($break-point) {
+      flex-direction: row;
+    }
+  }
+
+  // .grid__col
+  &__col {
+
+    // create grid columns dynamically
+    // loop through each column size
+    @for $i from 1 through 12 {
+
+      // concatenate CSS selector, ie when $i = 1,
+      // selector would be .grid__col--1
+      &--#{$i} {
+
+        // base styles applied to all grid columns
+        // NOTE: could be converted to a placeholder, along with margin
+        // from the  media query
+        margin-top: 10px;
+        flex-basis: 100%;
+
+        // NOTE: replace with media query mixin if aiming for exceeds
+        @include media-query($break-point) {
+
+          // base stlyes applied to all grid columns
+          margin-top: 0;
+
+          // make column width a percentage of the column number / total columns
+          flex-basis: #{$i / 12 * 100 + "%"} ;
+        }
+      }
+    }
+  }
+}
+
+// targets all elements with classes that begin with grid__col
+[class^=grid__col] {
+  // grid__col + grid__col, targets two sibling columns
+  & + & {
+
+    // NOTE: replace with media query mixin if aiming for exceeds
+    @include media-query($break-point){
+
+      // add grid gutter
+      margin-left: 10px;
+    }
+  }
+}
+//*****************************************************************************
+//                         main container CSS rules:
+//*****************************************************************************
+
+.container {
+  @include flex-box(column);
+  justify-content: center;
+  color: $text-general-color;
+}
+
+//*****************************************************************************
+//                         GRID ROW  CSS rules:
+//*****************************************************************************
+
+.grid__row {
+  @include center-content (95%, 0);
+  @include media-query($break-point){
+    justify-content: space-around;
+  }
+}
+
+
+//*****************************************************************************
+//                         GRID COLUMN CSS rules:
+//*****************************************************************************
+
+@for $i from 2 through 12  {
+  .grid__col--#{$i} {
+    width: 100%;
+    margin-bottom: 0;
+    @include media-query($break-point) {
+      margin-left: 15px;
+      margin-right: 15PX;
+    }
+  }
+}
+
+//*****************************************************************************
+//                         GRID COLUMN 3 CSS rules:
+//*****************************************************************************
+
+.grid__col--3 {
+  text-align: center;
+}
+
+//*****************************************************************************
+//                         GRID COLUMN 6 CSS rules:
+//*****************************************************************************
+
+.grid__col--6 {
+  text-align: center;
+}
+
+
+//*****************************************************************************
+//                         GRID COLUMN 9 CSS rules:
+//*****************************************************************************
+
+.grid__col--9 {
+  padding: 10px 0;
+}
+
+
+//*****************************************************************************
+//                         GRID COLUMN 12 CSS rules:
+//*****************************************************************************
+
+.grid__col--12 {
+  @include media-query($break-point) {
+    @include flex-box(row);
+    justify-content: space-between;
+      button {
+        margin-left: 15px;
+        margin-right: 15PX;
+      }
+  }
+}
+
+//*****************************************************************************
+//                          grid system section CSS rules:
+//                  color themes class & class starting with grid
+//*****************************************************************************
+
+@each $col-key, $col-color in $grid-colors {
+  .theme__colors.grid__#{$col-key} {
+    width: 100%;
+    margin-top: 5px;
+    background-color: #{$col-color};
+    text-align: left;
+    @include media-query($break-point) {
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}

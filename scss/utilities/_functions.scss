@@ -1,0 +1,8 @@
+// *****************************************************************************
+//                                 resize-font-px function
+//                            acts just like the rem function
+// *****************************************************************************
+
+@function resize-font-px($original-size, $percentage) {
+  @return ($original-size * $percentage);
+}

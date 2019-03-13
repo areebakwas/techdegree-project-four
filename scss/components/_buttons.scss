@@ -1,0 +1,29 @@
+// *****************************************************************************
+//                            theme colors class CSS rules
+// *****************************************************************************
+
+.theme__colors {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+// *****************************************************************************
+//                            default button class CSS rules
+// *****************************************************************************
+
+.btn--default {
+  @extend %btn;
+  background-color: $link-color;
+}
+
+// *****************************************************************************
+//               button section (other than default) CSS rules:
+//                       class starting with btn loop
+// *****************************************************************************
+
+@each $button-key, $button-color in $button-colors {
+  .btn--#{$button-key} {
+    @extend %btn;
+    background-color: #{$button-color};
+  }
+}
