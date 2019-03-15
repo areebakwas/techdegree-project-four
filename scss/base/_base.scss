@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: $orig-small-font-size;
+  
 
   @include media-query($break-point) {
     font-size: $orig-large-font-size;
@@ -11,5 +12,10 @@
 p {
   @include font-fix($general-font-percent);
   margin-bottom: 20px;
+
+}
+
+.link {
+  text-decoration: none;
 
 }
